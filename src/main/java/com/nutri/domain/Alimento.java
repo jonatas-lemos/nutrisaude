@@ -15,8 +15,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
+
 @Entity
-@Data
+
 public class Alimento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +28,40 @@ public class Alimento {
 	@OneToMany(mappedBy = "alimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonBackReference
 	private List<Comida> comida;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public BigDecimal getCaloria() {
+		return caloria;
+	}
+
+	public void setCaloria(BigDecimal caloria) {
+		this.caloria = caloria;
+	}
+
+	public List<Comida> getComida() {
+		return comida;
+	}
+
+	public void setComida(List<Comida> comida) {
+		this.comida = comida;
+	}
+	
+	
+	
 
 }

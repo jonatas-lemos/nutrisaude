@@ -10,9 +10,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.Data;
 
-@Data
 @Entity
 public class Usuario {
 	@Id
@@ -25,4 +23,45 @@ public class Usuario {
 	@JsonBackReference
 	private List<Prato> prato;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public List<Prato> getPrato() {
+		return prato;
+	}
+
+	public void setPrato(List<Prato> prato) {
+		this.prato = prato;
+	}
+
+	
 }

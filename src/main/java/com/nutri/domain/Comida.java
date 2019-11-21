@@ -9,10 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Data;
-
 @Entity
-@Data
 public class Comida {
 
 	@Id
@@ -30,5 +27,39 @@ public class Comida {
 	@JoinColumn(name = "prato_id")
 	@JsonManagedReference
 	private Prato prato;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Integer getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Integer peso) {
+		this.peso = peso;
+	}
+
+	public Alimento getAlimento() {
+		return alimento;
+	}
+
+	public void setAlimento(Alimento alimento) {
+		this.alimento = alimento;
+	}
+
+	public Prato getPrato() {
+		return prato;
+	}
+
+	public void setPrato(Prato prato) {
+		this.prato = prato;
+	}
+	
+	
 
 }
