@@ -15,15 +15,15 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
-
 @Entity
 
 public class Alimento {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private BigDecimal caloria;
+	private Integer caloria;
 
 	@OneToMany(mappedBy = "alimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonBackReference
@@ -45,11 +45,11 @@ public class Alimento {
 		this.nome = nome;
 	}
 
-	public BigDecimal getCaloria() {
+	public Integer getCaloria() {
 		return caloria;
 	}
 
-	public void setCaloria(BigDecimal caloria) {
+	public void setCaloria(Integer caloria) {
 		this.caloria = caloria;
 	}
 
@@ -60,8 +60,4 @@ public class Alimento {
 	public void setComida(List<Comida> comida) {
 		this.comida = comida;
 	}
-	
-	
-	
-
 }

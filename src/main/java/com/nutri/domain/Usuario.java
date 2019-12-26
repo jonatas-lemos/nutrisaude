@@ -6,10 +6,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Data;
 
 @Entity
 public class Usuario {
@@ -62,6 +66,6 @@ public class Usuario {
 	public void setPrato(List<Prato> prato) {
 		this.prato = prato;
 	}
-
 	
+
 }

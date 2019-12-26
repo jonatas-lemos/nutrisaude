@@ -1,6 +1,5 @@
 package com.nutri.domain;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,20 +13,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-@Entity
+import lombok.Data;
 
+@Entity
 public class Prato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private BigDecimal caloriasTotal;
+	private Integer caloriasTotal;
 	private LocalDate data;
 	
 	@OneToMany(mappedBy = "prato", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonManagedReference
 	private List<Comida> comida;
 	
 	@ManyToOne
@@ -43,11 +42,11 @@ public class Prato {
 		this.id = id;
 	}
 
-	public BigDecimal getCaloriasTotal() {
+	public Integer getCaloriasTotal() {
 		return caloriasTotal;
 	}
 
-	public void setCaloriasTotal(BigDecimal caloriasTotal) {
+	public void setCaloriasTotal(Integer caloriasTotal) {
 		this.caloriasTotal = caloriasTotal;
 	}
 
@@ -74,8 +73,6 @@ public class Prato {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
 
 
 }

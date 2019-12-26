@@ -7,7 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.Data;
 
 @Entity
 public class Comida {
@@ -25,7 +28,8 @@ public class Comida {
 
 	@ManyToOne
 	@JoinColumn(name = "prato_id")
-	@JsonManagedReference
+	@JsonBackReference
+	
 	private Prato prato;
 
 	public Long getId() {
@@ -59,7 +63,7 @@ public class Comida {
 	public void setPrato(Prato prato) {
 		this.prato = prato;
 	}
-	
-	
 
+	
+	
 }

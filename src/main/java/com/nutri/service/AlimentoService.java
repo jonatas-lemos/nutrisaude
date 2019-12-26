@@ -31,14 +31,14 @@ public class AlimentoService {
 	private ComidaRepository comidaRepository;
 	
 	
-	public BigDecimal criarRefeicao(RefeicaoDTO d) {
+	public Prato criarRefeicao(RefeicaoDTO d) {
 		Usuario u = usuarioRepository.findById(d.getIdUsuario()).get();
 		Prato p = new Prato();
 		p.setUsuario(u);
 		p.setData(LocalDate.now());
 		p = pratoRepository.save(p);
 		
-		BigDecimal soma = new BigDecimal(0);
+		Integer soma =	0;
 		for(AlimentoDto dto: d.getAlimentos()) {
 			Alimento a = alimentoRepository.findById(dto.getId()).get();
 			Comida c = new Comida();
@@ -46,20 +46,21 @@ public class AlimentoService {
 			c.setPeso(dto.getPeso());
 			c.setPrato(p);
 			comidaRepository.save(c);
-			soma.add(calcularCaloria(dto, a));
+			soma+=calcularCaloria(dto, a);
 		}
-		
 		p.setCaloriasTotal(soma);
 		p = pratoRepository.save(p);
 		
-		return p.getCaloriasTotal(); 
+		return p; 
 		
 	}
 
 	
 
-	public BigDecimal calcularCaloria(AlimentoDto d, Alimento a) {
-		return a.getCaloria().multiply(new BigDecimal((d.getPeso()/100)));
+	public Integer calcularCaloria(AlimentoDto d, Alimento a) {
+		Integer division = d.getPeso()/100;
+		Integer m = a.getCaloria()*division; 
+		return m;
 	}
 
 	

@@ -3,9 +3,9 @@ package com.nutri.dto;
 import lombok.Data;
 
 @Data
-public class AlimentoDto {
+public class ComidaDto {
 
-	private Long id;
+	private String nome;
 	private Integer peso;
-		
+	private Integer caloria;
 }
